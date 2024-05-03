@@ -39,10 +39,19 @@ public class Login {
 		return cursos;
 	}
 
+	public void setCursos(List<String> cursos) {
+		this.cursos = cursos;
+	}
+	
 	public void setCurso(String curso) {
 		this.cursos.add(curso);
 	}
 
+	public void deleteCurso (String curso) {
+		cursos.remove(curso);
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(name, pass);

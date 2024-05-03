@@ -39,4 +39,14 @@
     <servlet-name>ServletRegistro</servlet-name>
     <url-pattern>/ServletRegistro</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletDeleteCurso</display-name>
+    <servlet-name>ServletDeleteCurso</servlet-name>
+    <servlet-class>com.cursojava.ServletDeleteCurso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDeleteCurso</servlet-name>
+    <url-pattern>/ServletDeleteCurso</url-pattern>
+  </servlet-mapping>
 </web-app>

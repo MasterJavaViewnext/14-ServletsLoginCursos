@@ -57,7 +57,7 @@ public class ServletLogin extends HttpServlet {
 					HttpSession session = request.getSession();
 					Login login = new Login(request.getParameter("user_name"), request.getParameter("user_password"));
 					session.setAttribute("login", login);
-
+					
 					rd.forward(request, response);
 				}
 		

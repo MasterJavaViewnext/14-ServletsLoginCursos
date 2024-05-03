@@ -26,11 +26,12 @@ public class ServletCursos extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Login login = (Login) session.getAttribute("login");
-		List<Login> lista = (ArrayList<Login>) session.getAttribute("lista");
-
+		ArrayList<Login> lista = (ArrayList)session.getAttribute("lista");
+		
 		if (lista != null) {
 
 			if (lista.contains(login)) {
+				login = lista.get(lista.indexOf(login));
 				session.setAttribute("login", login);
 				request.setAttribute("cursos", login.getCursos());
 				request.getRequestDispatcher("/views/cursos.jsp").forward(request, response);
@@ -49,12 +50,13 @@ public class ServletCursos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("POST de cusos");
+		System.out.println("GET de cursos");
 		HttpSession session = request.getSession();
 		Login login = (Login) session.getAttribute("login");
-		login.setCurso(request.getParameter("curso"));
-		System.out.println(login.getCursos());
-		request.setAttribute("cursos", login.getCursos());
+		if (request.getParameter("curso") != null) {
+			//((Login)session.getAttribute("login")).setCurso(request.getParameter("curso"));
+			login.setCurso(request.getParameter("curso"));
+		}
 		request.getRequestDispatcher("/views/cursos.jsp").forward(request, response);
 	}
 

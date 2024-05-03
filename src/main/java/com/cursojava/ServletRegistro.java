@@ -27,11 +27,15 @@ public class ServletRegistro extends HttpServlet {
 		
 		if (session.getAttribute("lista") == null) {
 			List<Login> lista = new ArrayList<Login>();
-			lista.add(login);
+			Login raul = new Login("raul", "abc123.");
+			raul.setCurso("Master Java ViewNext");
+			raul.setCurso("Curso DAM DUAL");
+			lista.add(raul);
 			session.setAttribute("lista", lista);
-		} else {
+		} 
+
 			((List<Login>)session.getAttribute("lista")).add(login);
-		}
+		
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}

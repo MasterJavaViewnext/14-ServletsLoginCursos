@@ -1,7 +1,8 @@
+<%@page import="com.cursojava.Login"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% List<String> cursos = ((List<String>)request.getAttribute("cursos")); %>
+<% List<String> cursos = ((Login)session.getAttribute("login")).getCursos(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,13 @@
 <body>
 	<h1><%=session.getAttribute("login").toString()%></h1>
 		<% for( String value : cursos ){ %>  
-  	<h4><%= value %></h4>
+  			<form action="ServletDeleteCurso" method="get">
+  			<div>
+  				<h4><%= value %></h4>		
+        		<input type="hidden" name="delete" value="<%=value%>" />
+				<button name="submit">Eliminar</button>	
+  			</div>
+  			</form>
 		<%}%>
 	<form action="ServletCursos" method="get">
 		<div>
@@ -20,7 +27,7 @@
 				id="curso" name="curso" required />
 		</div>
 		<div class="button">
-			<button type="submit">Añadir</button>
+			<button type="submit">Matricularse</button>
 		</div>
 	</form>
 </body>
